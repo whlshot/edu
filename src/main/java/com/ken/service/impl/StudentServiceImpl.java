@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2019/1/14
  */
 @Service
-public class StudentServiceImpl implements IStudentService {
+public class StudentServiceImpl extends BaseServiceImpl<StudentMapper, Student> implements IStudentService {
 
     @Autowired
     private StudentMapper studentMapper;

@@ -13,9 +13,11 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.Resources;
+import javax.sql.DataSource;
 import java.io.IOException;
 
 /**
@@ -74,7 +76,11 @@ public class EduConfiguration {
         return sqlSessionFactoryBean;
     }
 
-    // todo 事务管理器
-
+    @Bean
+    public DataSourceTransactionManager transactionManager(DruidDataSource dataSource) {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
 
 }
