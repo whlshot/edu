@@ -5,15 +5,16 @@ package com.ken.common.model;
  * @date 2019/1/16
  */
 public class ResultInfo<T> {
-    private String status;
+    private Integer status;
     private String info;
+    private boolean success;
     private T data;
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -31,5 +32,13 @@ public class ResultInfo<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }

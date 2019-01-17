@@ -10,4 +10,7 @@ public interface Constant {
 
     public static final int DEL_FLAG_0 = 0;
 
+    public static final String NULL_STRING = "-";
+
+
 }

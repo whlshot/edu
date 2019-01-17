@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2019/1/14
  */
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
 public class StudentController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     @GetMapping("/getOne")
-    public Student getOneStudent(){
+    public Student getOneStudent() {
         return studentService.getOneStudent();
     }
 }
