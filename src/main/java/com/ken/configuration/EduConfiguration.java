@@ -1,23 +1,17 @@
 package com.ken.configuration;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import javax.annotation.Resources;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 /**
@@ -41,7 +35,7 @@ public class EduConfiguration {
     @Bean
     public DruidDataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://192.168.5.16:3306/edu");
+        dataSource.setUrl("jdbc:mysql://192.168.5.104:3306/edu");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
         dataSource.setInitialSize(1);
@@ -63,16 +57,19 @@ public class EduConfiguration {
     }
 
     @Bean
-    public MybatisSqlSessionFactoryBean sqlSessionFactoryBean(DruidDataSource dataSource) {
-        MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
+    public SqlSessionFactoryBean sqlSessionFactoryBean(DruidDataSource dataSource) {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         Resource[] resources = new Resource[0];
         try {
-            resources = new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis.mapper/*.xml");
+            resources = new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis/mapper/*.xml");
         } catch (IOException e) {
             e.printStackTrace();
         }
         sqlSessionFactoryBean.setMapperLocations(resources);
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+        sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
     }
 

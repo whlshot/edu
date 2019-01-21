@@ -1,7 +1,5 @@
 package com.ken.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
@@ -10,9 +8,7 @@ import java.util.Date;
  * @author yhq
  * @date 2018/12/24
  */
-@TableName("edu_student")
 public class Student {
-    @TableId
     private Integer id;
     private String name;
     private Integer sex;

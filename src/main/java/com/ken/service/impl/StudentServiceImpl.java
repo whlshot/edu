@@ -6,7 +6,6 @@ import com.ken.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,22 +13,19 @@ import java.util.List;
  * @date 2019/1/14
  */
 @Service
-public class StudentServiceImpl extends BaseServiceImpl<StudentMapper, Student> implements IStudentService {
+public class StudentServiceImpl implements IStudentService {
 
     @Autowired
     private StudentMapper studentMapper;
 
     @Override
     public List<Student> getAllStudent() {
-        Student student = studentMapper.selectById(1);
-        List<Student> list = new ArrayList<>();
-        list.add(student);
-        return list;
+        return null;
     }
 
     @Override
     public Student getOneStudent() {
-        return studentMapper.selectById(1);
+        return null;
     }
 
 }

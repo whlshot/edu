@@ -4,7 +4,7 @@ import com.ken.entity.Student;
 
 import java.util.List;
 
-public interface IStudentService extends IBaseService<Student> {
+public interface IStudentService  {
 
     List<Student> getAllStudent();
 

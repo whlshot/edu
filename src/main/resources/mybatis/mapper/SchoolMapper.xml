@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ken.mapper.SchoolMapper">
+
+    <insert id="insertSchool">
+        insert into edu_school(school_name,address,school_code,pro_code,city_code,county_code,school_system,school_system_detail,edu_stage,contact_name,contact_phone,contact_email)
+        values(#{school.schoolName},#{school.address},#{school.schoolCode},#{school.proCode},#{school.cityCode},#{school.countyCode},#{school.schoolSystem},#{school.schoolSystemDetail},#{school.eduStage},#{school.contactName},#{school.contactPhone},#{school.contactEmail})
+    </insert>
+
+    <update id="updateSchool">
+        update edu_school
+        <set>
+            <if test="school.schoolName!=null">
+                school_name=#{school.schoolName},
+            </if>
+            <if test="school.address!=null">
+                address=#{school.address},
+            </if>
+            <if test="school.schoolCode!=null">
+                school_code=#{school.schoolCode},
+            </if>
+            <if test="school.proCode!=null">
+                pro_code=#{school.proCode},
+            </if>
+            <if test="school.cityCode!=null">
+                city_code=#{school.cityCode},
+            </if>
+            <if test="school.countyCode!=null">
+                county_code=#{school.countyCode},
+            </if>
+            <if test="school.schoolSystem!=null">
+                school_system=#{school.schoolSystem},
+            </if>
+            <if test="school.schoolSystemDetail!=null">
+                school_system_detail=#{school.schoolSystemDetail},
+            </if>
+            <if test="school.eduStage!=null">
+                edu_stage=#{school.eduStage},
+            </if>
+            <if test="school.contactName!=null">
+                contact_name=#{school.contactName},
+            </if>
+            <if test="school.contactPhone!=null">
+                contact_phone=#{school.contactPhone},
+            </if>
+            <if test="school.contactEmail!=null">
+                contact_email=#{school.contactEmail},
+            </if>
+            update_time=now()
+        </set>
+        where id=#{school.id}
+    </update>
+
+    <update id="delSchool">
+        update edu_school set del_flag=1 where id=#{id}
+    </update>
+
+    <select id="selectSchoolById" resultType="com.ken.entity.School">
+      select id,school_name,address,school_code,pro_code,city_code,county_code,school_system,school_system_detail,edu_stage,contact_name,contact_phone,contact_email
+      from edu_school where id=#{id}
+    </select>
+</mapper>
