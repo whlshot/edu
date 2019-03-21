@@ -18,6 +18,19 @@ public class SchoolController {
     @Autowired
     private ISchoolService schoolService;
 
+    /**
+     * 注册学校
+     *
+     * @param school
+     * @author yhq
+     * @date 2019/3/21
+     */
+    @PostMapping("createSchool")
+    public ResultInfo createSchool(@RequestBody School school) {
+        schoolService.saveSchool(school);
+        return ResultUtils.success();
+    }
+
     @PostMapping("/addSchool")
     public ResultInfo saveSchool(@RequestBody School school) {
         schoolService.saveSchool(school);

@@ -4,7 +4,7 @@ import com.ken.entity.School;
 
 public interface ISchoolService {
 
-    boolean saveSchool(School school);
+    void saveSchool(School school);
 
     boolean delSchool(Integer id);
 

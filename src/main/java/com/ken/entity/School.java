@@ -20,6 +20,7 @@ public class School {
     private String contactName;//联系人
     private String contactPhone;//联系方式
     private String contactEmail;//联系邮件
+    private String schoolNature;//办学性质
 
     public Integer getId() {
         return id;
@@ -123,5 +124,13 @@ public class School {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getSchoolNature() {
+        return schoolNature;
+    }
+
+    public void setSchoolNature(String schoolNature) {
+        this.schoolNature = schoolNature;
     }
 }
