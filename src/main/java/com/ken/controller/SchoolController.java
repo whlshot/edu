@@ -20,6 +20,11 @@ public class SchoolController {
 
     /**
      * 注册学校
+     * 1.保存学校信息
+     * 2.保存用户信息
+     * 3.保存用户组织角色关系
+     * 4.保存登录账号
+     * 5.发送短信 TODO
      *
      * @param school
      * @author yhq
@@ -27,12 +32,6 @@ public class SchoolController {
      */
     @PostMapping("createSchool")
     public ResultInfo createSchool(@RequestBody School school) {
-        schoolService.saveSchool(school);
-        return ResultUtils.success();
-    }
-
-    @PostMapping("/addSchool")
-    public ResultInfo saveSchool(@RequestBody School school) {
         schoolService.saveSchool(school);
         return ResultUtils.success();
     }

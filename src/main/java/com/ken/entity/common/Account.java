@@ -12,7 +12,7 @@ public class Account {
     private String password;
     private String salt;
     private String email;
-    private String userId;
+    private Integer userId;
     private Integer delFlag;
     private String phone;
 
@@ -56,11 +56,11 @@ public class Account {
         this.email = email;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

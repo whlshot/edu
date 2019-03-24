@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50642
 File Encoding         : 65001
 
-Date: 2019-03-24 15:19:01
+Date: 2019-03-24 17:15:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -116,15 +116,27 @@ CREATE TABLE `edu_org` (
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_role`;
 CREATE TABLE `edu_role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `role_type` int(2) NOT NULL,
+  `role_type` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
 -- Records of edu_role
 -- ----------------------------
+INSERT INTO `edu_role` VALUES ('1001', '超级管理员', '0');
+INSERT INTO `edu_role` VALUES ('1002', '学校管理员', '0');
+INSERT INTO `edu_role` VALUES ('1003', '校长', null);
+INSERT INTO `edu_role` VALUES ('1004', '班主任', null);
+INSERT INTO `edu_role` VALUES ('1005', '老师', null);
+INSERT INTO `edu_role` VALUES ('1006', '家长', null);
+INSERT INTO `edu_role` VALUES ('1007', '安保队长', null);
+INSERT INTO `edu_role` VALUES ('1008', '安保人员', null);
+INSERT INTO `edu_role` VALUES ('1009', '保洁', null);
+INSERT INTO `edu_role` VALUES ('1010', '宿管员', null);
+INSERT INTO `edu_role` VALUES ('1011', '学生', null);
+INSERT INTO `edu_role` VALUES ('1012', '学校工作人员', null);
 
 -- ----------------------------
 -- Table structure for edu_school
@@ -177,21 +189,33 @@ CREATE TABLE `edu_student` (
 INSERT INTO `edu_student` VALUES ('1', 'aa', '0', '102', '2019-01-14', '2019-01-14 15:26:47', '2019-01-14 23:26:44', '0');
 
 -- ----------------------------
+-- Table structure for edu_student_org
+-- ----------------------------
+DROP TABLE IF EXISTS `edu_student_org`;
+CREATE TABLE `edu_student_org` (
+  `student_id` int(11) NOT NULL,
+  `org_id` int(11) DEFAULT NULL,
+  `create_tiem` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of edu_student_org
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for edu_user
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_user`;
 CREATE TABLE `edu_user` (
   `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL COMMENT '姓名',
-  `user_name` varchar(50) NOT NULL COMMENT '用户名',
-  `password` varchar(32) NOT NULL COMMENT '密码',
-  `salt` varchar(32) NOT NULL COMMENT '密码盐',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(255) DEFAULT NULL COMMENT '手机号',
-  `acc_status` int(255) DEFAULT NULL COMMENT '账号状态',
   `del_flag` int(1) DEFAULT '0' COMMENT '删除标志位，0未删除/1已删除',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `account_user_name` (`user_name`) USING BTREE
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='账户表';
 
 -- ----------------------------

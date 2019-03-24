@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ken.mapper.SchoolMapper">
 
-    <insert id="insertSchool">
+    <insert id="insertSchool" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into edu_school(school_name,address,school_code,pro_code,city_code,county_code,school_system,school_system_detail,edu_stage,contact_name,contact_phone,contact_email)
         values(#{school.schoolName},#{school.address},#{school.schoolCode},#{school.proCode},#{school.cityCode},#{school.countyCode},#{school.schoolSystem},#{school.schoolSystemDetail},#{school.eduStage},#{school.contactName},#{school.contactPhone},#{school.contactEmail})
     </insert>

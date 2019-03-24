@@ -7,12 +7,8 @@ package com.ken.entity;
 public class User {
     private Integer id;
     private String name;//姓名
-    private String userName;//用户名
-    private String password;//密码
-    private String salt;//密码盐
     private String phone;//手机号
     private String email;//邮箱
-    private Integer accStatus;//账号状态
     private Integer delFlag;//删除标志位，0未删除/1已删除
 
     public Integer getId() {
@@ -31,30 +27,6 @@ public class User {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -71,19 +43,22 @@ public class User {
         this.email = email;
     }
 
-    public Integer getAccStatus() {
-        return accStatus;
-    }
-
-    public void setAccStatus(Integer accStatus) {
-        this.accStatus = accStatus;
-    }
-
     public Integer getDelFlag() {
         return delFlag;
     }
 
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", delFlag=" + delFlag +
+                '}';
     }
 }

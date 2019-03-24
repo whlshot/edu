@@ -1,7 +1,9 @@
 package com.ken.service.impl;
 
 import com.ken.entity.User;
+import com.ken.mapper.UserMapper;
 import com.ken.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,9 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements IUserService {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public void saveUser(User user) {
-
+        userMapper.saveUser(user);
     }
 
 }
