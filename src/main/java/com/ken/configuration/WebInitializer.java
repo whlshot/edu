@@ -17,7 +17,8 @@ public class WebInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(EduConfiguration.class);
+        ctx.register(MvcConfiguration.class);
+        ctx.register(DataSourceConfiguration.class);
         ctx.setServletContext(servletContext);
 
         Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));

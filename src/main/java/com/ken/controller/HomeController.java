@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yhq
  * @date 2018/12/24
  */
-@RestController("/home")
+@RestController
 public class HomeController {
 
     @GetMapping("/index")
