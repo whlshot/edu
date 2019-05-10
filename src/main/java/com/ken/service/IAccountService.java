@@ -8,9 +8,9 @@ public interface IAccountService {
 
     void saveAccount(Integer schoolId, Account account);
 
-    Account getAccountByEmail(String loginName);
+    Account getAccountByEmail(String email);
 
-    Account getAccountByPhone(String loginName);
+    Account getAccountByPhone(String phone);
 
     Account getAccountByLoginName(String loginName, String password);
 }

@@ -49,12 +49,12 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public Account getAccountByEmail(String loginName) {
+    public Account getAccountByEmail(String email) {
         return null;
     }
 
     @Override
-    public Account getAccountByPhone(String loginName) {
+    public Account getAccountByPhone(String phone) {
         return null;
     }
 
